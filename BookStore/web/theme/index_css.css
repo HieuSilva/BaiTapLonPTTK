@@ -1,0 +1,55 @@
+.row h2 {
+	text-align: center;
+}
+
+.books {
+	/*padding-left: 20%;*/
+}
+
+.book {
+	margin-top: 50px;
+}
+
+.book-description {
+	font-size: 120%;
+}
+
+.book-price {
+	margin-top: 20px; 
+	margin-bottom: 20px;
+	font-weight: bold;
+	font-size: 150%;
+}
+
+.book-thumb img {
+	width: 100%;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.jumbotron {
+	margin-bottom: 0px;
+	background-color: #5CB85C;
+	color: white;
+}
+
+li.cart-item {
+	background-color: #5CB85C;
+	padding: 10px;
+	margin-bottom: 10px;
+	color: white;
+	border-radius: 10px;
+}
+
+ul.cart-list {
+	margin: 0;
+	padding: 0;
+	margin-right: 20px;
+}
+
+a.remove-item {
+	padding-top: 5px;
+	color: black;
+}
