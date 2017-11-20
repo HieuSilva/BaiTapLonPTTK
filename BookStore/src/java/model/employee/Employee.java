@@ -22,8 +22,8 @@ public class Employee extends User implements Serializable {
     public Employee() {
     }
 
-    public Employee(Branch branch, String fullname, Date birthday, Account account, Address address, String phone, String email) {
-        super(fullname, birthday, account, address, phone, email);
+    public Employee(Branch branch, String fullname, Date birthday, Account account, String phone, String email) {
+        super(fullname, birthday, account, phone, email);
         this.branch = branch;
     }
 

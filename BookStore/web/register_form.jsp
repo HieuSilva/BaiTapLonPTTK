@@ -109,5 +109,45 @@
                 </div>
             </form> <!-- /form -->
         </div> <!-- ./container -->
+
+<!--        <div class="row">
+            <div class="books col-md-9">
+                <h2>Danh sách đầu sách</h2>
+                <ul class="book-list">
+                    
+                    <li class="book col-sm-6">';
+                    echo '<form name="add_to_cart" method="post" action="cart_update.php"> ';
+
+                    echo '<div class="row">';
+                    echo '<div class="book-thumb col-sm-4"><img src="images/'.$obj->image_link.'"></div>';
+                    echo '<div class="col-sm-8">';
+                    echo '<h3 class="book-name">'.$obj->name.'</h3>';
+                    echo '<div class="book-description">Nhà xuất bản: '.$obj->publisher.'</div>';
+                    echo '<div class="book-description">Tác giả: '.$obj->author.'</div>';
+                    echo '<div class="book-price">Giá: '.$obj->price.' '.$currency. '</div>';
+
+                    echo '<div class="row">';
+                    echo '<div class="form-group col-sm-4">';
+                    echo '<input type="number" style="padding:5px 0px" name="book-quantity" placeholder="Số lượng" required min="1" max="10"/></div>';
+                    echo '<button class="add_to_cart btn btn-success col-sm-6"><span class="glyphicon glyphicon-shopping-cart">  </span> Cho vào giỏ</button>';
+                    echo '</div>';
+                    echo '</div>';
+
+
+
+                    echo '</div>';
+
+                    echo '<input type="hidden" name="book-id" value="'.$obj->id.'" />';
+                    echo '<input type="hidden" name="type" value="add" />';
+                    echo '<input type="hidden" name="return_url" value="'.$current_url.'" />';
+                    echo '</form>';
+                    echo '</li>';
+                    }
+
+                    }
+                    ?>
+
+                </ul>
+            </div>-->
     </body>
 </html>

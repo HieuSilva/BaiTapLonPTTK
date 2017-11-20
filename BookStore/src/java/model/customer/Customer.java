@@ -22,9 +22,8 @@ public class Customer extends User implements Serializable {
     public Customer() {
     }
 
-    public Customer(int id, String fullname, Date birthday, Account account, Address address, String phone, String email) {
-        super(fullname, birthday, account, address, phone, email);
-        this.id = id;
+    public Customer(String fullname, Date birthday, Account account, String phone, String email) {
+        super(fullname, birthday, account, phone, email);
     }
 
     public int getId() {

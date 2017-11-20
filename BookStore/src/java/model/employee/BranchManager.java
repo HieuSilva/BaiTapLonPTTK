@@ -23,8 +23,8 @@ public class BranchManager extends Employee implements Serializable {
     public BranchManager() {
     }
 
-    public BranchManager(int id, Branch branch, String fullname, Date birthday, Account account, Address address, String phone, String email) {
-        super(branch, fullname, birthday, account, address, phone, email);
+    public BranchManager(int id, Branch branch, String fullname, Date birthday, Account account, String phone, String email) {
+        super(branch, fullname, birthday, account, phone, email);
         this.id = id;
     }
 

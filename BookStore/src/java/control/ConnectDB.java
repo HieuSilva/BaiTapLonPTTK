@@ -41,11 +41,11 @@ public class ConnectDB {
         try {
             if (conn == null) {
                 hasDriver();
-                String url = "jjdbc:sqlserver://localhost\\EVALUATION:1433; databasename=Bookstore; username=sa; password=12345678";
+                String url = "jdbc:sqlserver://localhost\\EVALUATION:1433; databasename=Bookstore; username=sa; password=12345678";
                 conn = DriverManager.getConnection(url);
             }
         } catch (Exception e) {
-            System.out.println("Error Connecton! Please check url or username and password of mysql!");
+            System.out.println("Error Connecton! Please check url or username and password of SQL Server!");
         }
         return conn;
     }
