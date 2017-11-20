@@ -35,11 +35,12 @@ public class CustomerLoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String return_url = request.getParameter("return-url");
         CustomerDAO dao = new CustomerDAO();
         Customer customer = dao.checkLogin(username, password);
         HttpSession session = request.getSession();
         session.setAttribute("customer", customer);
-        response.sendRedirect("index.jsp");
+        response.sendRedirect(return_url);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

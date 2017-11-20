@@ -6,19 +6,22 @@
 package control;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.book.Book;
+import model.order.BookOrder;
 
 /**
  *
  * @author HIEU
  */
-@WebServlet(name = "AddToCartServlet", urlPatterns = {"/AddToCartServlet"})
-public class AddToCartServlet extends HttpServlet {
+@WebServlet(name = "CartServlet", urlPatterns = {"/CartServlet"})
+public class CartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +35,45 @@ public class AddToCartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        try {
+            BookDAO bd = new BookDAO();
+            HttpSession session = request.getSession();
+            ArrayList<BookOrder> cartList = (ArrayList<BookOrder>) session.getAttribute("cartList");
+            if (cartList == null) {
+                cartList = new ArrayList<BookOrder>();
+            }
+
+            int id_book = Integer.parseInt(request.getParameter("book-id"));
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            String return_url = request.getParameter("return-url");
+            String type = request.getParameter("type");
+
+            Book b = bd.getBookById(id_book);
+
+            if (type.equals("add")) {
+                BookOrder bo = new BookOrder(b, quantity, b.getPrice());
+
+                boolean exist = false;
+                int index = -1;
+                for (BookOrder bookOrder : cartList) {
+                    if (bo.getBook().getId() == bookOrder.getBook().getId()) {
+                        index = cartList.indexOf(bookOrder);
+                        exist = true;
+                        break;
+                    }
+                }
+                if (exist) {
+                    cartList.set(index, bo);
+                } else {
+                    cartList.add(bo);
+                }
+            }
+            session.setAttribute("cartList", cartList);
+            response.sendRedirect(return_url);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
