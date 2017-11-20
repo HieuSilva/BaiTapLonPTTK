@@ -31,13 +31,13 @@ public class OrderDAO {
                 + "VALUES(?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            java.util.Date utilDate = new Date();
-            java.sql.Date createDate = new java.sql.Date(utilDate.getTime());
+//            java.util.Date utilDate = new Date();
+//            java.sql.Date createDate = new java.sql.Date(utilDate.getTime());
             int idCustomer = order.getCustomer().getAccount().getId();
             int idAddress = order.getShippingAddress().getId();
             String state = order.getState();
             
-            ps.setDate(1, createDate);
+            ps.setDate(1, order.getCreateDate());
             ps.setInt(2, idCustomer);
             ps.setInt(3, idAddress);
             ps.setString(4, state);

@@ -103,7 +103,7 @@
                         <ul class="dropdown-menu">
                             <%if (categoryList != null) {
                                     for (Category c : categoryList) {%>
-                            <li><a href="index.php?category_id=<%= c.getId()%>"><%= c.getName()%></a></li>
+                            <li><a href="index.jsp?category_id=<%= c.getId()%>"><%= c.getName()%></a></li>
                                 <%}
                                     }%>
                         </ul>
@@ -194,7 +194,7 @@
                                                 <td><a href="#" class="btn btn-warning" onclick="document.getElementById('modal-cart').style.display = 'none'"><span class="glyphicon glyphicon-arrow-left"></span> Continue Shopping</a></td>
                                                 <td colspan="2" class="hidden-xs"></td>
                                                 <td class="hidden-xs text-center"><strong><%= total%></strong></td>
-                                                <td><a href="#" class="btn btn-success btn-block">Checkout <span class="glyphicon glyphicon-arrow-right"></span></a></td>
+                                                <td><a href="checkout.jsp" class="btn btn-success btn-block">Checkout <span class="glyphicon glyphicon-arrow-right"></span></a></td>
                                             </tr>
                                         </tfoot>
                                     </table>
