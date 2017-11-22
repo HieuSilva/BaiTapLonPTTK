@@ -59,7 +59,7 @@
                 <% } else {%>
                 <div class="container-fluid" >
                     <h3 style="text-align:center; margin-bottom:50px; color:#001a33; font-weight: bold">CUSTOMER INFORMATION</h3>
-                    <form class="form-horizontal" role="form" id="reg-form" action="" method="POST">
+                    <form class="form-horizontal" role="form" id="reg-form" action="OrderServlet" method="POST">
 
                         <div class="form-group">
                             <label for="fullname" class="col-sm-3 control-label">Full name</label>

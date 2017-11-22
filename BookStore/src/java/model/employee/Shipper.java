@@ -5,13 +5,14 @@
  */
 package model.employee;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  *
  * @author HIEU
  */
-public class Shipper {
+public class Shipper implements Serializable{
     private int id;
     private String fullname;
     private String email;

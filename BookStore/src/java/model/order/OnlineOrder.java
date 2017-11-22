@@ -5,6 +5,7 @@
  */
 package model.order;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import model.Address;
@@ -15,7 +16,8 @@ import model.employee.Shipper;
  *
  * @author HIEU
  */
-public class OnlineOrder {
+public class OnlineOrder implements Serializable {
+    
     private int id;
     private Date createDate;
     private ArrayList<BookOrder> itemList;

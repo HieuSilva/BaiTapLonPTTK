@@ -5,13 +5,15 @@
  */
 package model.order;
 
+import java.io.Serializable;
 import model.book.Book;
 
 /**
  *
  * @author HIEU
  */
-public class BookOrder {
+public class BookOrder implements Serializable{
+    
     private Book book;
     private int quantity;
     private float price;

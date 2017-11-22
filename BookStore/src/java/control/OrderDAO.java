@@ -8,7 +8,7 @@ package control;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Date;
+import model.Address;
 import model.order.BookOrder;
 import model.order.OnlineOrder;
 
@@ -31,8 +31,6 @@ public class OrderDAO {
                 + "VALUES(?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-//            java.util.Date utilDate = new Date();
-//            java.sql.Date createDate = new java.sql.Date(utilDate.getTime());
             int idCustomer = order.getCustomer().getAccount().getId();
             int idAddress = order.getShippingAddress().getId();
             String state = order.getState();
@@ -63,7 +61,7 @@ public class OrderDAO {
     public int getMaxOrderId() {
         String sql = "SELECT MAX(id) as id FROM tbl_online_order";
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = ps.executeQuery();
             if(rs.last()) {
                 rs.beforeFirst();
@@ -75,5 +73,52 @@ public class OrderDAO {
             return 0;
         }
         return 1;
+    }
+    
+    public boolean checkAddress(Address a) {
+        String sql = "SELECT * FROM tbl_address "
+                + "WHERE house_number = ? "
+                + "AND street = ? "
+                + "AND province = ? "
+                + "AND city = ?"
+                + "AND country = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ps.setString(1, a.getHouseNumber());
+            ps.setString(2, a.getStreet());
+            ps.setString(3, a.getProvince());
+            ps.setString(4, a.getCity());
+            ps.setString(5, a.getCountry());
+            ResultSet rs = ps.executeQuery();
+            if(rs.last()) {
+                rs.beforeFirst();
+                return true;
+            }
+        }catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+    
+    public boolean addAddress(Address a) {
+        if(checkAddress(a)) {
+           return false; 
+        }
+        String sql = "INSERT INTO tbl_address(house_number, street, province, city, country) "
+                + "VALUES(?,?,?,?,?) ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, a.getHouseNumber());
+            ps.setString(2, a.getStreet());
+            ps.setString(3, a.getProvince());
+            ps.setString(4, a.getCity());
+            ps.setString(5, a.getCountry());
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
