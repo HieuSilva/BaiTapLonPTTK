@@ -33,7 +33,7 @@
                 <div class="col-md-5">
                     <img src="edu/<%=b.getImage()%>">                   
                 </div>
-                
+
                 <div class="col-md-7" >
                     <div class="title" style="font-size: 30px; font-weight: bolder;">
                         <p><%=b.getTitle()%></p>
@@ -47,20 +47,22 @@
                     <div class="size"><p>Kích cỡ: <%=b.getSize().getWidth()%> X <%=b.getSize().getHeight()%> X <%=b.getSize().getLength()%></div>
                     <div class="mass"><p>Trọng lượng: <%=b.getSize().getMass()%> Kg</p></div>
                     <div class="pre_cart">
+                        <form name="add_to_cart" method="post" action="CartServlet">
+                            <input type="hidden" name="book-id" value="<%= b.getId()%>" />   
+                            <input type="hidden" name="type" value="add" />  
+                            <input type="hidden" name="return-url" value="BookDetail.jsp?idBook=<%= b.getId()%>" />
+                        
                         <div class="count">Số lượng: <input type="text" name="quantity" value="1" /></div>
                         <div class="row" style="text-algin:center" >
                             <button class="add_to_cart btn btn-success" style=" float: center"><span class="glyphicon glyphicon-shopping-cart">  </span> Add to cart</button>
                         </div>
+                        </form>
                     </div>
-                
-                <form name="add_to_cart" method="post" action="CartServlet">
-                    <input type="hidden" name="book-id" value="<%= b.getId()%>" />   
-                    <input type="hidden" name="type" value="add" />  
-                    <input type="hidden" name="return-url" value="BookDetail.jsp?idBook=<%= b.getId()%>" />
-                </form>
+
+
+                </div>
             </div>
         </div>
-    </div>
-    <%@include file="footer.jsp" %>
-</body>
+        <%@include file="footer.jsp" %>
+    </body>
 </html>
