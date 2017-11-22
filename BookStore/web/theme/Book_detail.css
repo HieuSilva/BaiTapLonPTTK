@@ -8,19 +8,17 @@ and open the template in the editor.
     Author     : ASUS
 */
 
-.content{
-    width: 100%;
-    height: 500px;
-     margin-top: 50px;
-    margin-left: 100px;
+.container{
+    margin-top: 50px;
+/*    margin-left: 100px;*/
     
 }
 .left_widget{
-    float: left;
+/*    float: left;*/
 }
 .right_widget{
-    float: right;
-    margin-right: 250px;
+/*    float: right;
+    margin-right: 250px;*/
     
 }
 .row{

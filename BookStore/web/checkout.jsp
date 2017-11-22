@@ -195,7 +195,7 @@
                                         <td class="text-right"><h5><strong>50000</strong></h5></td>
                                     </tr>
                                     <tr>
-                                        <td>   </td>
+                                        <td><a class="btn btn-danger" href="order_detail.jsp"><span class="glyphicon glyphicon-pencil"></span> Edit your cart</a></td>
                                         <td>   </td>
                                         <td><h3>Total</h3></td>
                                         <td class="text-right"><h3><strong><%= total + 50000%></strong></h3></td>

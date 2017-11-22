@@ -15,10 +15,15 @@
         <%
             BookDAO bd = new BookDAO();
             Category[] categoryList = bd.getListCategory();
-            System.out.println(categoryList);
-            ArrayList<Book> bookList = (ArrayList<Book>) (session.getAttribute("bookList"));
-            if (bookList == null) {
-                bookList = bd.getAllBook();
+            ArrayList<Book> bookList = bd.getAllBook();
+            
+            if(request.getParameter("category_id") != null) {
+                int categoryId = Integer.parseInt(request.getParameter("category_id"));
+                bookList = bd.getBookByCategory(categoryId);
+            }
+            if(request.getParameter("book_name") != null) {
+                String bookName = (String) request.getParameter("book_name");
+                bookList = bd.getBookByName(bookName);
             }
         %>
         <nav class="navbar navbar-default nav-top" role="navigation">

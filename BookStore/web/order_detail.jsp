@@ -62,18 +62,14 @@
                                         <div class="media-body">
                                             <h4 class="media-heading"><%= bo.getBook().getTitle()%></h4>
                                             <h5 class="media-heading">By <a href="#"><%= bo.getBook().getPublisher().getName()%></a></h5>
-<!--                                            <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>-->
                                         </div>
                                     </div></td>
                                 <form action="CartServlet" method="POST">
                                 <td class="col-sm-1 col-md-1" style="text-align: center">
-<!--                                    <form action="CartServlet" method="POST" style="display: inline">-->
-                                    <input type="number" name="quantity" class="form-control" value="<%= bo.getQuantity()%>">
+                                    <input type="number" name="quantity" class="form-control" value="<%= bo.getQuantity()%>" min="1" max="10">
                                     <input type="hidden" name="item-index" value="<%= cartList.indexOf(bo) %>" />
                                     <input type="hidden" name="return-url" value="order_detail.jsp" />
                                     <input type="hidden" name="type" value="update" />
-<!--                                    <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-refresh"></span></button>-->
-<!--                                    </form>-->
                                 </td>
                                 <td class="col-md-1 col-sm-1">
                                     <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-refresh"></span></button>

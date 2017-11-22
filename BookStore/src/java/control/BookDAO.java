@@ -199,4 +199,26 @@ public class BookDAO {
         }
         return null;
     }
+    
+    public ArrayList<Book> getBookByCategory(int categoryId){
+        ArrayList<Book> allBook =  getAllBook();
+        ArrayList<Book> list = new ArrayList<Book>();
+        for(Book b : allBook){
+            if(b.getCategory().getId() == categoryId) {
+                list.add(b);
+            }
+        }
+        return list;
+    }
+    
+    public ArrayList<Book> getBookByName(String key){
+        ArrayList<Book> allBook =  getAllBook();
+        ArrayList<Book> list = new ArrayList<Book>();
+        for(Book b : allBook){
+            if(b.getTitle().toLowerCase().contains(key.toLowerCase())) {
+                list.add(b);
+            }
+        }
+        return list;
+    }
 }

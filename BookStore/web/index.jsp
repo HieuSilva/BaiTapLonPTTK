@@ -40,10 +40,13 @@
                                         </a>
                                     </div>
                                 </div>
-
+                                <div class="row">
+                                    <h5 style="text-align: left; margin-left: 20px; height: 20px; font-weight: bold"><%=b.getTitle()%></h5>
+                                </div>
                                 <div class="row">
                                     <div class="book-price">Price: <%=b.getPrice()%></div>
                                 </div>
+                                
                                 <div class="row" style="text-algin:center">
                                     <button class="add_to_cart btn btn-success"><span class="glyphicon glyphicon-shopping-cart">  </span> Add to cart</button>
                                 </div>
