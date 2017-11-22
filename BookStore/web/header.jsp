@@ -29,13 +29,13 @@
                         if (customer == null) {
                     %>
                     <li>
-                        <a href="register_form.jsp" target="blank">
+                        <a href="register_form.jsp" target="blank" style="color:white">
                             <span class="glyphicon glyphicon-user"></span> Sign up
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" onclick="document.getElementById('modal-login').style.display = 'block'">
+                        <a href="#" onclick="document.getElementById('modal-login').style.display = 'block'" style="color:white">
                             <span class="glyphicon glyphicon-log-in"></span> Log in
                         </a>
                     </li>
@@ -65,7 +65,7 @@
                     </div>
                     <% } else {%>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <%= customer.getFullname()%> <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white">Welcome <%= customer.getFullname()%> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">View profile</a></li>
                             <li><a href="CustomerLogoutServlet">Log out</a></li>
@@ -79,9 +79,10 @@
 
     <div class="fluid-container">
         <div class="jumbotron">
-            <h1 style="margin-left: 50px">Book store</h1>
+            <a href="index.jsp" style="color:white; text-decoration: none"><h1 style="margin-left: 50px">Book store</h1></a>
         </div>
     </div>
+                
     <nav class="navbar navbar-default" role="navigation" >
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->

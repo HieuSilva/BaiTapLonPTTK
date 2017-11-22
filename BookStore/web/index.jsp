@@ -31,10 +31,14 @@
                     <%if (bookList != null) {
                             for (Book b : bookList) {%>
                     <li class="book col-md-2">
-                        <a href="#">
+                        
                             <form name="add_to_cart" method="post" action="CartServlet">
                                 <div class="row">
-                                    <div class="book-thumb col-sm-12"><img src="edu/<%=b.getImage()%>"></div>
+                                    <div class="book-thumb col-sm-12">
+                                        <a href="BookDetail.jsp?idBook=<%= b.getId() %>">
+                                            <img src="edu/<%=b.getImage()%>">
+                                        </a>
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -48,7 +52,7 @@
                                 <input type="hidden" name="quantity" value="1" />
                                 <input type="hidden" name="return-url" value="index.jsp" />
                             </form>
-                        </a>
+                        
                     </li>
                     <% }
                         }%>

@@ -32,7 +32,7 @@
         %>
         <div class="fluid-container">
             <div class="jumbotron">
-                <h1 style="margin-left: 50px">Book store</h1>
+                <a href="index.jsp" style="color:white; text-decoration: none"><h1 style="margin-left: 50px">Book store</h1></a>
             </div>
         </div>
 
@@ -130,9 +130,11 @@
                                 <div class="col-sm-5 col-sm-offset-2">
                                     <a class="btn btn-success btn-block" href="index.jsp"><span class="glyphicon glyphicon-arrow-left"></span> Continue shopping</a>
                                 </div>
+                                <% if(cartItemCount > 0) {%>
                                 <div class="col-sm-5">
-                                    <button type="submit" class="btn btn-warning btn-block" ><span class="glyphicon glyphicon-arrow-right"></span> Go to pay</button>
+                                    <button type="submit" class="btn btn-warning btn-block" ><span class="glyphicon glyphicon-arrow-right"></span> Order</button>
                                 </div>
+                                <% } %>
                             </div>
                         </div>
                     </form> <!-- /form -->

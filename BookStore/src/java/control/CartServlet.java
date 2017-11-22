@@ -42,15 +42,16 @@ public class CartServlet extends HttpServlet {
             if (cartList == null) {
                 cartList = new ArrayList<BookOrder>();
             }
-
-            int id_book = Integer.parseInt(request.getParameter("book-id"));
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            
             String return_url = request.getParameter("return-url");
             String type = request.getParameter("type");
 
-            Book b = bd.getBookById(id_book);
 
             if (type.equals("add")) {
+                int id_book = Integer.parseInt(request.getParameter("book-id"));
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
+                Book b = bd.getBookById(id_book);
+                
                 BookOrder bo = new BookOrder(b, quantity, b.getPrice());
 
                 boolean exist = false;
@@ -67,6 +68,17 @@ public class CartServlet extends HttpServlet {
                 } else {
                     cartList.add(bo);
                 }
+            }
+            else if(type.equals("remove")) {
+                int itemIndex = Integer.parseInt(request.getParameter("item-index"));
+                cartList.remove(itemIndex);
+                session.setAttribute("cartList", cartList);
+            }
+            else if(type.equals("update")) {
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
+                int itemIndex = Integer.parseInt(request.getParameter("item-index"));
+                cartList.get(itemIndex).setQuantity(quantity);
+                session.setAttribute("cartList", cartList);
             }
             session.setAttribute("cartList", cartList);
             response.sendRedirect(return_url);

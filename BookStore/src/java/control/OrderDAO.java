@@ -44,7 +44,7 @@ public class OrderDAO {
             for(BookOrder bo : order.getItemList()) {
                 String query = "INSERT INTO tbl_book_order(id_book, id_online_order, price, quantity) "
                                 + "VALUES(?,?,?,?); ";
-                PreparedStatement st = con.prepareStatement(sql);
+                PreparedStatement st = con.prepareStatement(query);
                 st.setInt(1, bo.getBook().getId());
                 st.setInt(2, getMaxOrderId());
                 st.setFloat(3, bo.getPrice());
@@ -80,7 +80,7 @@ public class OrderDAO {
                 + "WHERE house_number = ? "
                 + "AND street = ? "
                 + "AND province = ? "
-                + "AND city = ?"
+                + "AND city = ? "
                 + "AND country = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -91,19 +91,17 @@ public class OrderDAO {
             ps.setString(5, a.getCountry());
             ResultSet rs = ps.executeQuery();
             if(rs.last()) {
-                rs.beforeFirst();
                 return true;
             }
         }catch(Exception e) {
             e.printStackTrace();
-            return false;
         }
         return false;
     }
     
-    public boolean addAddress(Address a) {
+    public void addAddress(Address a) {
         if(checkAddress(a)) {
-           return false; 
+           return;
         }
         String sql = "INSERT INTO tbl_address(house_number, street, province, city, country) "
                 + "VALUES(?,?,?,?,?) ";
@@ -115,10 +113,25 @@ public class OrderDAO {
             ps.setString(4, a.getCity());
             ps.setString(5, a.getCountry());
             ps.executeUpdate();
-            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
+    }
+    
+    public int getMaxIdAddress() {
+        String sql = "SELECT MAX(id) as id FROM tbl_address";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = ps.executeQuery();
+            if(rs.last()) {
+                rs.beforeFirst();
+                while(rs.next())
+                    return rs.getInt("id");
+            }
+        }catch(Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+        return 1;
     }
 }

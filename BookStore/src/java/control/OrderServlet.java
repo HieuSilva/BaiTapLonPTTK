@@ -50,9 +50,10 @@ public class OrderServlet extends HttpServlet {
         String country = request.getParameter("country");
         
         Address address = new Address(houseNumber, street, province, city, country);
-        if(dao.addAddress(address)) {
+        dao.addAddress(address);
+        int idAddress = dao.getMaxIdAddress();
+        address.setId(idAddress);
             
-        }
         
         java.util.Date utilDate = new Date();
         java.sql.Date createDate = new java.sql.Date(utilDate.getTime());
