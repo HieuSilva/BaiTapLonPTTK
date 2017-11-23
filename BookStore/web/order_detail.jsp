@@ -31,13 +31,18 @@
         %>
         <div class="fluid-container">
             <div class="jumbotron">
-                <a href="index.jsp" style="color:white; text-decoration: none"><h1 style="margin-left: 50px">Book store</h1></a>
+                <a href="index.jsp" style="color:white; text-decoration: none">
+                    <div class="row">
+                        <img src="edu/bookstore_logo.jpg"  class="col-md-1">
+                        <h1 class="col-md-10">F4 Worker Store</h1>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="container">
             <h2 style="text-align: center; margin: 20px">My cart</h2>
             <%
-                if(cartItemCount > 0) {
+                if (cartItemCount > 0) {
             %>
             <div class="row">
                 <div class="col-sm-12 col-md-10 col-md-offset-1">
@@ -52,8 +57,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% for(BookOrder bo: cartList) {
-                                total += bo.getPrice() * bo.getQuantity();
+                            <% for (BookOrder bo : cartList) {
+                                    total += bo.getPrice() * bo.getQuantity();
                             %>
                             <tr>
                                 <td class="col-sm-7 col-md-5">
@@ -64,73 +69,73 @@
                                             <h5 class="media-heading">By <a href="#"><%= bo.getBook().getPublisher().getName()%></a></h5>
                                         </div>
                                     </div></td>
-                                <form action="CartServlet" method="POST">
-                                <td class="col-sm-1 col-md-1" style="text-align: center">
-                                    <input type="number" name="quantity" class="form-control" value="<%= bo.getQuantity()%>" min="1" max="10">
-                                    <input type="hidden" name="item-index" value="<%= cartList.indexOf(bo) %>" />
-                                    <input type="hidden" name="return-url" value="order_detail.jsp" />
-                                    <input type="hidden" name="type" value="update" />
-                                </td>
-                                <td class="col-md-1 col-sm-1">
-                                    <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-refresh"></span></button>
-                                </td>
-                                </form>
-                                <td class="col-sm-1 col-md-1 text-center"><strong><%= bo.getPrice() %></strong></td>
-                                <td class="col-sm-1 col-md-1 text-center"><strong><%= bo.getPrice() * bo.getQuantity() %></strong></td>
-                                <td class="col-sm-1 col-md-1">
-                                    <form style="display: inline" action="CartServlet" method="POST">
-                                        <input type="hidden" name="item-index" value="<%= cartList.indexOf(bo) %>" />
-                                        <input type="hidden" name="type" value="remove" />
-                                        <input type="hidden" name="return-url" value="order_detail.jsp" />
-                                        <button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove"></span></button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <% } %>
-                            <tr>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>   </td>
-                                <td><h5>Subtotal</h5></td>
-                                <td class="text-right"><h5><strong><%= total %></strong></h5></td>
-                            </tr>
-                            <tr>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>   </td>
-                                <td><h5>Estimated shipping</h5></td>
-                                <td class="text-right"><h5><strong>50000</strong></h5></td>
-                            </tr>
-                            <tr>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>   </td>
-                                <td><h3>Total</h3></td>
-                                <td class="text-right"><h3><strong><%= total + 50000%></strong></h3></td>
-                            </tr>
-                            <tr>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>
-                                    <a class="btn btn-default" href="index.jsp">
-                                        <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                                    </a</td>
-                                <td>
-                                    <a class="btn btn-success" href="checkout.jsp">
-                                        Checkout <span class="glyphicon glyphicon-play"></span>
-                                    </a
-                                </td>
-                            </tr>
+                        <form action="CartServlet" method="POST">
+                            <td class="col-sm-1 col-md-1" style="text-align: center">
+                                <input type="number" name="quantity" class="form-control" value="<%= bo.getQuantity()%>" min="1" max="10">
+                                <input type="hidden" name="item-index" value="<%= cartList.indexOf(bo)%>" />
+                                <input type="hidden" name="return-url" value="order_detail.jsp" />
+                                <input type="hidden" name="type" value="update" />
+                            </td>
+                            <td class="col-md-1 col-sm-1">
+                                <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-refresh"></span></button>
+                            </td>
+                        </form>
+                        <td class="col-sm-1 col-md-1 text-center"><strong><%= bo.getPrice()%></strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong><%= bo.getPrice() * bo.getQuantity()%></strong></td>
+                        <td class="col-sm-1 col-md-1">
+                            <form style="display: inline" action="CartServlet" method="POST">
+                                <input type="hidden" name="item-index" value="<%= cartList.indexOf(bo)%>" />
+                                <input type="hidden" name="type" value="remove" />
+                                <input type="hidden" name="return-url" value="order_detail.jsp" />
+                                <button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove"></span></button>
+                            </form>
+                        </td>
+                        </tr>
+                        <% }%>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h5>Subtotal</h5></td>
+                            <td class="text-right"><h5><strong><%= total%></strong></h5></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h5>Estimated shipping</h5></td>
+                            <td class="text-right"><h5><strong>50000</strong></h5></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h3>Total</h3></td>
+                            <td class="text-right"><h3><strong><%= total + 50000%></strong></h3></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <a class="btn btn-default" href="index.jsp">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                </a</td>
+                            <td>
+                                <a class="btn btn-success" href="checkout.jsp">
+                                    Checkout <span class="glyphicon glyphicon-play"></span>
+                                </a
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <% }else { %>
+            <% } else { %>
             <div class="container-fluid" style="text-align: center">
                 <h2>Your cart is empty</h2>
                 <a style="margin-top: 50px" class="btn btn-success" href="index.jsp"><span class="glyphicon glyphicon-arrow-left"></span>  Continue shopping</a>

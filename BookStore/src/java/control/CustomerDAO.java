@@ -51,4 +51,21 @@ public class CustomerDAO {
         }
         return null;
     }
+    public boolean addCustomer(Customer c){
+        String sql= "INSERT INTO tbl_customer (fullname,username,password,birthday,email,phone) VALUES (?,?,?,?,?,?)";
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ps.setString(1, c.getFullname());
+            ps.setString(2, c.getAccount().getUsername());
+            ps.setString(3, c.getAccount().getPassword());
+            ps.setDate(4, c.getBirthday());
+            ps.setString(5, c.getEmail());
+            ps.setString(6, c.getPhone());
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

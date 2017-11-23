@@ -18,7 +18,12 @@
     <body>
         <div class="fluid-container">
             <div class="jumbotron">
-                <a href="index.jsp" style="color:white; text-decoration: none"><h1 style="margin-left: 50px">Book store</h1></a>
+                <a href="index.jsp" style="color:white; text-decoration: none">
+                    <div class="row">
+                        <img src="edu/bookstore_logo.jpg"  class="col-md-1">
+                        <h1 class="col-md-10">F4 Worker Store</h1>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="container content">

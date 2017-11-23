@@ -8,7 +8,7 @@ package model.employee;
 import model.employee.Branch;
 import model.employee.Employee;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import model.Account;
 import model.Address;
 

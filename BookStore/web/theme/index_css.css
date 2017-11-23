@@ -14,6 +14,12 @@
 
 .books {
     /*padding-left: 20%;*/
+    
+}
+
+.body-content {
+    background-image: url("edu/learning2.png");
+    /*background-color:     #80ff80;*/
 }
 
 .book {
@@ -23,7 +29,11 @@
     margin-bottom: 100px;
     text-decoration: none;
     color: black;
-    
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px 2px;
+    background-color: white;
+    box-shadow: 2px 2px 15px black;
 }
 
 .book a {
@@ -31,7 +41,6 @@
 }
 
 .book a:hover {
-/*    border: 1px solid red;*/
     text-decoration: none;
     color: black;
     
@@ -49,9 +58,10 @@
 }
 
 .book-thumb img {
-    height: 200px;
     margin: auto;
-/*    margin-left: 20px;*/
+    width: 70%;
+    height: 200px;
+    
 }
 
 ul {

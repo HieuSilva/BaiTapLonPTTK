@@ -14,21 +14,55 @@
         <link rel="stylesheet" href="theme/register_form_css.css">
         <script src="theme/bootstrap/js/jquery-3.2.1.js" type="text/javascript"></script>
         <script src="theme/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script>
+        $(document).ready(function() {
+            $("#reg-form").submit(function() {
+                /* Act on the event */
+                var flag = false;
+                var fullname = $.trim($('#fullname').val());
+                var email    = $.trim($('#email').val());
+                var username = $.trim($('#username').val());
+                var password = $.trim($('#password').val());
+                var repassword = $.trim($('#repassword').val());
+
+                if(password != repassword) {
+                    $("#error-message").text("Mật khẩu không khớp");
+                    return false;
+                }
+                var letterFilter = /[a-zA-Z]/g;
+                var numberFilter = /[0-9]/g;
+                if(!password.match(letterFilter) || !password.match(numberFilter)) {
+                    $("#error-message").text("Password must have both number and letter");
+                    return false;
+                }
+                if(password.length < 8) {
+                    $("#error-message").text("Password must have at least 8 characters");
+                    return false;
+                }
+            });
+        });
+    </script>
     </head>
     <body>
         <div class="container">
-            <form class="form-horizontal" role="form" id="reg-form" action="register_execute.php" method="POST">
-                <h2>Đăng ký tài khoản mới</h2>
+            <form class="form-horizontal" role="form" id="reg-form" action="CustomerRegisterServlet" method="POST">
+                <h2>Create new account</h2>
                 <div class="form-group">
-                    <label for="fullname" class="col-sm-3 control-label">Họ tên *</label>
+                    <label for="fullname" class="col-sm-3 control-label">Fullname *</label>
                     <div class="col-sm-9">
-                        <input type="text" name="fullname" id="fullname" placeholder="Họ tên" class="form-control" autofocus required="true">
+                        <input type="text" name="fullname" id="fullname" placeholder="" class="form-control" autofocus required="true">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email *</label>
                     <div class="col-sm-9">
-                        <input type="email" id="email" name="email" placeholder="Email" class="form-control" required="true">
+                        <input type="email" id="email" name="email" placeholder="" class="form-control" required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-sm-3 control-label">Phone *</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="phone" name="phone" placeholder="" class="form-control" required="true">
                     </div>
                 </div>
                 <div class="form-group">
@@ -38,26 +72,26 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Mật khẩu *</label>
+                    <label for="password" class="col-sm-3 control-label">Password *</label>
                     <div class="col-sm-9">
                         <input type="password" name="password" id="password" class="form-control" required="true">
-                        <span class="help-block">Mật khẩu phải chứa ít nhất 8 ký tự, gồm cả số và chữ</span>
+                        <span class="help-block">Password must have at least 8 characters, containing both number and letter</span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Nhập lại mật khẩu *</label>
+                    <label for="password" class="col-sm-3 control-label">Confirm password *</label>
                     <div class="col-sm-9">
                         <input type="password" id="repassword" class="form-control" required="true">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="birthday" class="col-sm-3 control-label">Ngày sinh</label>
+                    <label for="birthday" class="col-sm-3 control-label">Birthday</label>
                     <div class="col-sm-9">
                         <input type="date" name="birthday" id="birthday" class="form-control">
                     </div>
                 </div>
 
-                <div class="form-group">
+<!--                <div class="form-group">
                     <div class="row">
                         <label class="control-label col-sm-3">Giới tính</label>
                         <div class="col-sm-9">
@@ -80,17 +114,12 @@
                             </div>
                         </div>
                     </div>
-                </div> <!-- /.form-group -->
-                <div class="form-group">
-                    <label for="address" class="col-sm-3 control-label">Địa chỉ</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="address" id="address" class="form-control">
-                    </div>
-                </div>
+                </div>  /.form-group -->
+                
 
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                        <span class="help-block">* Thông tin bắt buộc</span>
+                        <span class="help-block">* Required information</span>
                     </div>
                     <div class="col-sm-9 col-sm-offset-3">
                         <h5><span id="error-message" style="color:red"></span></h5>
@@ -100,7 +129,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-5 col-sm-offset-2">
-                            <button type="submit" class="btn btn-success btn-block">Đăng ký</button>
+                            <button type="submit" class="btn btn-success btn-block">Sign up</button>
                         </div>
                         <div class="col-sm-5">
                             <button type="reset" class="btn btn-success btn-block">Reset</button>

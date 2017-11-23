@@ -32,7 +32,12 @@
         %>
         <div class="fluid-container">
             <div class="jumbotron">
-                <a href="index.jsp" style="color:white; text-decoration: none"><h1 style="margin-left: 50px">Book store</h1></a>
+                <a href="index.jsp" style="color:white; text-decoration: none">
+                    <div class="row">
+                        <img src="edu/bookstore_logo.jpg"  class="col-md-1">
+                        <h1 class="col-md-10">F4 Worker Store</h1>
+                    </div>
+                </a>
             </div>
         </div>
 
@@ -53,7 +58,9 @@
                         <input class="w3-input w3-border" type="password" name="password" required>
                         <input type="hidden" name="return-url" value="checkout.jsp">
                         <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Log in</button>
+                        <a class="w3-button w3-block w3-blue-gray" href="register_form.jsp" style="text-decoration:none">Not have account yet? Sign up here.</a>
                     </div>
+
                 </form>
 
                 <% } else {%>
@@ -130,7 +137,7 @@
                                 <div class="col-sm-5 col-sm-offset-2">
                                     <a class="btn btn-success btn-block" href="index.jsp"><span class="glyphicon glyphicon-arrow-left"></span> Continue shopping</a>
                                 </div>
-                                <% if(cartItemCount > 0) {%>
+                                <% if (cartItemCount > 0) {%>
                                 <div class="col-sm-5">
                                     <button type="submit" class="btn btn-warning btn-block" ><span class="glyphicon glyphicon-arrow-right"></span> Order</button>
                                 </div>
@@ -139,9 +146,9 @@
                         </div>
                     </form> <!-- /form -->
                 </div> <!-- ./container -->
-                 <%}%>
+                <%}%>
             </div>
-           
+
 
 
             <div class="col-md-7">

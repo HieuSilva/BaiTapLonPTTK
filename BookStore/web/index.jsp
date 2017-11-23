@@ -23,30 +23,30 @@
     <body>
         <%@include file="header.jsp" %>
 
-
-        <div class="row">
-            <div class="books col-md-12">
-                <h2>Book list</h2>
-                <ul class="book-list">
-                    <%if (bookList != null) {
+        <div class="container body-content" style="margin:auto; width:80%; margin-top: 20px; padding-left: 40px">
+            <div class="row">
+                <div class="books col-md-12">
+                    <h2>Book list</h2>
+                    <ul class="book-list">
+                        <%if (bookList != null) {
                             for (Book b : bookList) {%>
-                    <li class="book col-md-2">
-                        
+                        <li class="book col-md-2 col-sm-2" style="width: 20%">
+
+
+                            <div class="row">
+                                <div class="book-thumb col-sm-12">
+                                    <a href="BookDetail.jsp?idBook=<%= b.getId()%>">
+                                        <img src="edu/<%=b.getImage()%>">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h5 style="text-align: center; height: 20px; font-weight: bold; padding: 0px 20px"><%=b.getTitle()%></h5>
+                            </div>
+                            <div class="row">
+                                <div class="book-price">Price: <%=b.getPrice()%></div>
+                            </div>
                             <form name="add_to_cart" method="post" action="CartServlet">
-                                <div class="row">
-                                    <div class="book-thumb col-sm-12">
-                                        <a href="BookDetail.jsp?idBook=<%= b.getId() %>">
-                                            <img src="edu/<%=b.getImage()%>">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <h5 style="text-align: left; margin-left: 20px; height: 20px; font-weight: bold"><%=b.getTitle()%></h5>
-                                </div>
-                                <div class="row">
-                                    <div class="book-price">Price: <%=b.getPrice()%></div>
-                                </div>
-                                
                                 <div class="row" style="text-algin:center">
                                     <button class="add_to_cart btn btn-success"><span class="glyphicon glyphicon-shopping-cart">  </span> Add to cart</button>
                                 </div>
@@ -55,11 +55,12 @@
                                 <input type="hidden" name="quantity" value="1" />
                                 <input type="hidden" name="return-url" value="index.jsp" />
                             </form>
-                        
-                    </li>
-                    <% }
+
+                        </li>
+                        <% }
                         }%>
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
         <%@include file="footer.jsp" %>

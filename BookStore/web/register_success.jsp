@@ -1,6 +1,6 @@
 <%-- 
-    Document   : checkout_success
-    Created on : Nov 21, 2017, 10:14:31 AM
+    Document   : register_success
+    Created on : Nov 22, 2017, 7:39:40 PM
     Author     : HIEU
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Register Success</title>
         <link rel="stylesheet" href="theme/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="theme/checkout_success_css.css">
         <script src="theme/bootstrap/js/jquery-3.2.1.js" type="text/javascript"></script>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="container content">
-            <h1>Order success!</h1>
+            <h1>Register success!</h1>
             <img class="img-responsive" src="edu/like_icon.png" alt="Success" width="10%" height="10%" style="margin: auto">
             <h1 style="margin-bottom: 20px">Thank you!</h1>
             <a class="btn btn-success" href="index.jsp"><span class="glyphicon glyphicon-shopping-cart"> </span>  Continue shopping</a>

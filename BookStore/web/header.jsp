@@ -49,7 +49,7 @@
                         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
                             <div class="w3-center"><br>
                                 <span onclick="document.getElementById('modal-login').style.display = 'none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-                                <h2>Đăng nhập</h2>
+                                <h2>LOG IN</h2>
                             </div>
 
                             <form class="w3-container" action="CustomerLoginServlet">
@@ -84,7 +84,12 @@
 
     <div class="fluid-container">
         <div class="jumbotron">
-            <a href="index.jsp" style="color:white; text-decoration: none"><h1 style="margin-left: 50px">Book store</h1></a>
+            <a href="index.jsp" style="color:white; text-decoration: none">
+                <div class="row">
+                <img src="edu/bookstore_logo.jpg"  class="col-md-1">
+                <h1 class="col-md-10">F4 Worker Store</h1>
+                </div>
+            </a>
         </div>
     </div>
                 
